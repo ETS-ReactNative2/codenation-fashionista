@@ -1,0 +1,40 @@
+@import "../../assets/mixins.scss";
+
+.topbar {
+	padding: 0.5rem;
+	@include side-padding;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 3.5rem;
+	background-color: white;
+	box-shadow: 0 4px 7px rgba($color: #000000, $alpha: 0.025);
+
+	&__logo {
+		height: 100%;
+		display: inline-block;
+
+		& img {
+			height: 100%;
+			width: auto;
+		}
+	}
+
+	&__icon {
+		position: relative;
+	}
+
+	&__notification {
+		position: absolute;
+		top: 0;
+		right: 0;
+		font-size: 10px;
+		font-weight: 600;
+		color: white;
+		height: 1.6em;
+		width: 1.6em;
+		border-radius: 50%;
+		background-color: red;
+		line-height: 1.6em;
+	}
+}
