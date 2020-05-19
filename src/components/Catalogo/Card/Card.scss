@@ -1,0 +1,21 @@
+@import "../../../assets/styles.scss";
+
+// .flex-box {
+
+// }
+
+.card {
+	box-shadow: 0 0 15px $shadow;
+	background-color: white;
+	cursor: pointer;
+
+	&__infos {
+		padding: 10px;
+		text-align: center;
+		line-height: 1.25rem;
+	}
+
+	&__title {
+		@include my-font(1rem, 700);
+	}
+}

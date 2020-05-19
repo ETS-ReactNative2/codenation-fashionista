@@ -1,0 +1,33 @@
+@import "/../../assets/styles.scss";
+
+.container {
+	max-width: 1366px;
+}
+
+.catalogo {
+	@include root-side-spacing;
+
+	&__qntd {
+		display: block;
+		margin: 1.2rem;
+		@include my-font(0.8rem, 400, $gray);
+	}
+
+	&__grid {
+		display: grid;
+		gap: 10px;
+		grid-template-columns: repeat(2, minmax(180px, 1fr));
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.catalogo__grid {
+		grid-template-columns: repeat(3, minmax(220px, 1fr));
+	}
+}
+
+@media only screen and (min-width: 992px) {
+	.catalogo__grid {
+		grid-template-columns: repeat(4, minmax(24%, 1fr));
+	}
+}

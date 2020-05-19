@@ -1,22 +1,36 @@
 import React from "react";
 import "./Topbar.scss";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import Logo from "../../assets/logo.svg";
 
-const Topbar = ({ basketLength }) => (
+const Topbar = ({ qntdSacola }) => (
 	<header className="topbar">
-		<a href="/" className="topbar__logo">
-			<img src={Logo} alt="Logo" />
-		</a>
-		<div className="topbar__icons">
-			<button className="topbar__icon">
-				<i className="material-icons">search</i>
-			</button>
-			<button className="topbar__icon">
-				<i className="material-icons">shopping_basket</i>
-				<div className="topbar__notification">2</div>
-			</button>
+		<div className="container">
+			<div className="flex-box">
+				<Link to="/" className="topbar__logo">
+					<img src={Logo} alt="Logo" />
+				</Link>
+
+				<div className="topbar__icons">
+					<button className="topbar__icon">
+						<i className="material-icons">search</i>
+					</button>
+
+					<button className="topbar__icon">
+						<i className="material-icons">shopping_basket</i>
+						{qntdSacola ? <div className="topbar__notification">{qntdSacola}</div> : null}
+					</button>
+				</div>
+			</div>
 		</div>
 	</header>
 );
 
-export default Topbar;
+const mapStateToProps = (state) => {
+	return {
+		qntdSacola: state.sacola.length,
+	};
+};
+
+export default connect(mapStateToProps)(Topbar);
