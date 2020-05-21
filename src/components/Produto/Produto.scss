@@ -1,0 +1,119 @@
+@import "../../assets/styles.scss";
+
+.produto {
+	@include root-side-spacing;
+
+	&__panel {
+		margin: 1rem 0;
+	}
+
+	&__name {
+		@include my-font(1.3rem, 700);
+		margin: 0;
+		display: flex;
+		align-items: center;
+		width: 100%;
+	}
+
+	&__pricing {
+		margin: 0;
+		margin-top: 0.2rem;
+		@include my-font(1rem, 700);
+	}
+
+	&__price {
+		margin-right: 10px;
+		&--installments {
+			font-size: 0.8em;
+			color: $gray;
+		}
+	}
+
+	&__promotion {
+		margin-left: 25px;
+		vertical-align: middle;
+	}
+
+	&__models {
+		@include my-font(0.9rem, 400, $gray);
+		margin-top: 1rem;
+		span {
+			display: block;
+			margin-bottom: 0.5rem;
+			&.text-alert {
+				font-size: 0.9em;
+			}
+		}
+	}
+
+	&__size {
+		display: inline-block;
+		margin-right: 8px;
+
+		button {
+			@include my-font(0.9rem, 600);
+			line-height: 0.9rem;
+			padding: 10px 11px;
+			border: 1px solid $gray;
+			border-radius: $brd-rad;
+			transition: all 0.2s ease-in;
+			&:hover {
+				background-color: rgba($color: $gray, $alpha: 0.3);
+			}
+		}
+
+		&--selected {
+			button {
+				background-color: $dark-gray;
+				color: white;
+				border: none;
+				&:hover {
+					background-color: rgba($color: $dark-gray, $alpha: 0.9);
+				}
+			}
+		}
+	}
+
+	&__cta {
+		margin-top: 1.5rem;
+		button {
+			@include my-font(1.2rem, 500);
+			display: block;
+			width: 100%;
+			text-align: center;
+			background-color: $dark-gray;
+			border-radius: $brd-rad;
+			color: white;
+			padding: 10px 20px;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+		}
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.container {
+		height: calc(100vh - 3.5rem);
+		overflow: hidden;
+	}
+	.produto {
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
+		height: 100%;
+		display: flex;
+
+		&__panel {
+			margin: 0 auto;
+			padding-left: 1rem;
+		}
+
+		&__image {
+			margin-right: 1rem;
+			height: 100%;
+			min-width: max-content;
+			img {
+				max-height: 100%;
+				width: auto;
+			}
+		}
+	}
+}

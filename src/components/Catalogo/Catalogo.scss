@@ -16,6 +16,7 @@
 	&__grid {
 		display: grid;
 		gap: 10px;
+		margin-bottom: 10px;
 		grid-template-columns: repeat(2, minmax(180px, 1fr));
 	}
 }

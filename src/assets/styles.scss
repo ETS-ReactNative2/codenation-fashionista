@@ -1,8 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap");
+
 $gray: rgb(167, 167, 167);
+$dark-gray: #212529;
+$alert: #cf3838;
 $shadow: rgba(
 	$color: #000000,
 	$alpha: 0.04,
 );
+$brd-rad: 6px;
 
 @mixin root-side-spacing {
 	padding-left: 5vh;
@@ -10,7 +15,6 @@ $shadow: rgba(
 }
 
 @mixin my-font($size, $weight, $color: black) {
-	font-family: Noto Sans SC, sans-serif;
 	font-size: $size;
 	font-weight: $weight;
 	color: $color;
@@ -26,4 +30,21 @@ $shadow: rgba(
 .container {
 	display: block;
 	margin: auto;
+}
+
+.text-alert {
+	color: $alert;
+}
+
+[class$="--striked"] {
+	text-decoration: line-through;
+	color: $gray;
+	font-size: 0.9em;
+}
+
+[class$="__promotion"] {
+	@include my-font(0.7rem, 500, white);
+	background-color: black;
+	display: inline-block;
+	padding: 2px 4px;
 }

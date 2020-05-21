@@ -13,12 +13,13 @@ const Card = () => {
 
 			<div className="card__infos">
 				<h3 className="card__title">REGATA ALCINHA FOLK</h3>
+				<span className="card__price card__price--striked">R$ 99,90</span>
 				<span className="card__price">R$ 99,90</span>
 			</div>
 
-			{/* <div className="card__promotion">
-        <span></span>
-      </div> */}
+			<div className="card__promotion">
+				<span>-12%</span>
+			</div>
 		</div>
 	);
 };

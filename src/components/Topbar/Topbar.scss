@@ -7,6 +7,7 @@
 	background-color: white;
 	box-shadow: 0 4px 7px $shadow;
 	position: sticky;
+	z-index: 2;
 	top: 0;
 
 	.container {
@@ -42,7 +43,7 @@
 		height: 1.6em;
 		width: 1.6em;
 		border-radius: 50%;
-		background-color: red;
+		background-color: $alert;
 		line-height: 1.6em;
 	}
 }
