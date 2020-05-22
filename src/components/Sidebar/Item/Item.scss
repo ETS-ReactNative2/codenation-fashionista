@@ -1,0 +1,82 @@
+@import "../../../assets/styles.scss";
+
+.item {
+	display: flex;
+	height: 180px;
+	padding: 8px 0;
+	position: relative;
+	border-bottom: 1px solid $gray;
+
+	&__image {
+		height: 100%;
+		width: min-content;
+		img {
+			height: 100%;
+			width: auto;
+			cursor: pointer;
+		}
+	}
+
+	&__infos {
+		flex: 2;
+		margin-left: 8px;
+		margin-top: 9px;
+	}
+
+	&__name {
+		cursor: pointer;
+		transition: $transition;
+		&:hover {
+			color: $link;
+		}
+	}
+
+	&__amount {
+		@include my-font(1.1rem, 500);
+		margin-top: 20px;
+
+		button {
+			text-align: center;
+			line-height: 10px;
+			border: 1px solid black;
+			height: 1.3rem;
+			width: 1.3rem;
+			&:hover {
+				background-color: $dark-gray;
+				color: white;
+			}
+		}
+		span {
+			margin: 0 10px;
+		}
+	}
+
+	&__pricing {
+		margin-top: 8px;
+		margin-right: 8px;
+		flex: 1;
+		font-size: 0.9rem;
+		font-weight: 700;
+
+		span {
+			display: block;
+			text-align: right;
+		}
+	}
+
+	&__remove {
+		height: 28px;
+		width: 28px;
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
+		span {
+			transition: $transition;
+		}
+		&:hover {
+			span {
+				color: #aa3838;
+			}
+		}
+	}
+}

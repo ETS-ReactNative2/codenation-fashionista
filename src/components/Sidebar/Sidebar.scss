@@ -1,0 +1,71 @@
+@import "../../assets/styles.scss";
+
+.sidebar {
+	width: 100vw;
+	position: fixed;
+	overflow-y: auto;
+	top: 0;
+	bottom: 0;
+	z-index: 3;
+	background-color: $light-gray;
+
+	&__header {
+		position: sticky;
+		z-index: 1;
+		background-color: white;
+		top: 0;
+		height: 3.5rem;
+		padding: 0 2.5%;
+		display: flex;
+		align-items: center;
+		box-shadow: 0 6px 12px $shadow;
+	}
+
+	&__icon {
+		display: flex;
+		margin-right: 24px;
+		i {
+			font-size: 28px;
+		}
+	}
+
+	&__title {
+		display: inline-block;
+	}
+
+	&__busca {
+		padding: 8px 2.5%;
+		box-shadow: 0 12px 24px $shadow;
+
+		input {
+			font-size: 0.9rem;
+			display: block;
+			width: 100%;
+			padding: 8px 16px;
+			border: 1px solid rgba($color: $gray, $alpha: 0.5);
+			border-radius: $brd-rad;
+		}
+	}
+
+	&__items {
+		padding: 0 2.5%;
+	}
+
+	&__footer {
+		position: sticky;
+		bottom: 0;
+		background-color: $dark-gray;
+		padding: 0.9rem 8%;
+		@include my-font(0.9rem, 600, white);
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.sidebar {
+		height: 100vh;
+		width: 30vw;
+		min-width: 400px;
+		right: 0;
+		box-shadow: -8px 0 16px $shadow;
+	}
+}

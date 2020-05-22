@@ -1,6 +1,7 @@
 import React from "react";
-import "./style.scss";
+import "./Sidebar.scss";
 
-const Topbar = (props) => <div> </div>;
-
-export default Topbar;
+const Sidebar = () => {
+	return <div></div>;
+};
+export default Sidebar;

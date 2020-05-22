@@ -3,22 +3,20 @@ import "./Produto.scss";
 
 const Produto = (props) => {
 	return (
-		<div className="container">
+		<div className="produto__container container">
 			<div className="produto">
 				<figure className="produto__image">
 					<img
 						src="https://viniciusvinna.netlify.app/assets/api-fashionista/20002570_029_catalog_1.jpg"
-						alt="Foto modelo"
+						alt="Foto produto"
 					/>
 				</figure>
 				<div className="produto__panel">
 					<div className="produto__infos">
-						<h3 className="produto__name">
+						<h2 className="produto__name">
 							CAMISA SUEDE SPAN
-							<div className="produto__promotion">
-								<span>-12%</span>
-							</div>
-						</h3>
+							<span className="produto__promotion">-12%</span>
+						</h2>
 						<p className="produto__pricing">
 							<span className="produto__price produto__price--striked">R$ 199,90</span>
 							<span className="produto__price">R$ 159,90</span>
