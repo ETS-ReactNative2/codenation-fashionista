@@ -15,12 +15,13 @@ const Sidebar = () => {
 				<header className="sidebar__busca">
 					<input type="text" placeholder="Buscar produto ..." />
 				</header>
-				<ul className="sidebar__items">
+				<span className="sidebar__error">Nenhum item encontrado</span>
+				{/* <ul className="sidebar__items">
 					<Item />
 					<Item />
 					<Item />
 					<Item />
-				</ul>
+				</ul> */}
 			</div>
 			<footer className="sidebar__footer">
 				<span>Subtotal - R$ 789,50</span>

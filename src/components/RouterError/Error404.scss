@@ -1,0 +1,27 @@
+@import "../../assets/styles.scss";
+
+.error {
+	display: flex;
+	height: calc(100vh - 3.5rem);
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	& > * {
+		text-align: center;
+		width: 40%;
+		min-width: 400px;
+		margin-bottom: 3rem;
+	}
+
+	&__message {
+		font-size: 1.4rem;
+	}
+
+	&__cta {
+		span {
+			display: block;
+			color: $gray;
+			margin-bottom: 1.2rem;
+		}
+	}
+}

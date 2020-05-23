@@ -52,6 +52,20 @@ $brd-rad: 6px;
 	padding: 2px 4px;
 }
 
+[class$="__cta"] {
+	button {
+		display: block;
+		width: 100%;
+		@include my-font(1.2rem, 500);
+		text-align: center;
+		background-color: $dark-gray;
+		border-radius: $brd-rad;
+		color: white;
+		padding: 10px 20px;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+	}
+}
+
 [class$="--installments"],
 [class$="__length"] {
 	font-size: 0.8rem;

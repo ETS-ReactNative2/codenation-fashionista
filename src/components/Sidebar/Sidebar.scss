@@ -47,15 +47,29 @@
 		}
 	}
 
+	&__content {
+		height: calc(100% - 6.5rem);
+	}
+
 	&__items {
 		padding: 0 2.5%;
 	}
 
+	&__error {
+		display: block;
+		text-align: center;
+		margin-top: 50%;
+		@include my-font(1rem, 500, $gray);
+	}
+
 	&__footer {
 		position: sticky;
+		height: 3rem;
+		display: flex;
+		align-items: center;
 		bottom: 0;
 		background-color: $dark-gray;
-		padding: 0.9rem 8%;
+		padding: 0 8%;
 		@include my-font(0.9rem, 600, white);
 	}
 }
