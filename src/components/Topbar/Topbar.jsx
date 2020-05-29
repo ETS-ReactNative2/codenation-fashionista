@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Logo from "../../assets/logo.svg";
 
+// const Topbar = ({ qntdSacola }) => (
 const Topbar = ({ qntdSacola }) => (
 	<header className="topbar">
 		<div className="container">
@@ -29,7 +30,7 @@ const Topbar = ({ qntdSacola }) => (
 
 const mapStateToProps = (state) => {
 	return {
-		qntdSacola: state.sacola.length,
+		qntdSacola: state.bag.myBag.length,
 	};
 };
 

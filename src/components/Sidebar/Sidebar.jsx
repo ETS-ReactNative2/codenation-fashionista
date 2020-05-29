@@ -1,6 +1,6 @@
 import React from "react";
 import "./Sidebar.scss";
-import Item from "./Item/Item";
+// import Item from "./Item/Item";
 
 const Sidebar = () => {
 	return (

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Error404.scss";
+import "./Errors.scss";
 
 const Error404 = () => {
 	return (

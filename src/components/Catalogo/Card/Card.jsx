@@ -1,26 +1,29 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Card.scss";
 
-const Card = () => {
+const Card = ({ data }) => {
+	const hasPromotion = data.on_sale;
 	return (
-		<div className="card">
-			<figure className="card__image">
-				<img
-					src="https://viniciusvinna.netlify.app/assets/api-fashionista/20002570_029_catalog_1.jpg"
-					alt="Foto modelo"
-				/>
-			</figure>
+		<Link to={"/produto/" + data.url}>
+			<div className="card">
+				<figure className="card__image">
+					<img src={data.image} alt={"Foto " + data.name.toLowerCase()} />
+				</figure>
 
-			<div className="card__infos">
-				<h3 className="card__title">REGATA ALCINHA FOLK</h3>
-				<span className="card__price card__price--striked">R$ 99,90</span>
-				<span className="card__price">R$ 99,90</span>
-			</div>
+				<div className="card__infos">
+					<h3 className="card__title">{data.name}</h3>
+					{hasPromotion ? <span className="card__price card__price--striked">{data.regular_price}</span> : null}
+					<span className="card__price">{data.actual_price}</span>
+				</div>
 
-			<div className="card__promotion">
-				<span>-12%</span>
+				{hasPromotion ? (
+					<div className="card__promotion">
+						<span>{"-" + data.discount_percentage}</span>
+					</div>
+				) : null}
 			</div>
-		</div>
+		</Link>
 	);
 };
 
