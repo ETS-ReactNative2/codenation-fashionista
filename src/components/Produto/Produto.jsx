@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addToBag } from "../../store/actions/bagActions";
-import { parseNameFromUrl, getProductByName } from "../../utils/catalog";
+import { getProductByUrl } from "../../utils/catalog";
 import Error404 from "../Errors/Error404";
 import "./Produto.scss";
 
@@ -89,11 +89,10 @@ class Produto extends Component {
 
 const mapStateToProps = (state, ownProps) => {
 	const { products, loading } = state.catalog;
-	// console.log(state.bag);
 
-	const name = parseNameFromUrl(ownProps.match.params.name);
+	const url = ownProps.match.params.name;
 	return {
-		data: getProductByName(products, name),
+		data: getProductByUrl(products, url),
 		loading,
 	};
 };

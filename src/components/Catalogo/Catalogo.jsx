@@ -7,7 +7,7 @@ import ErrorAPI from "../Errors/ErrorAPI";
 
 const renderProducts = (products) => {
 	return products.map((product) => {
-		return <Card data={product} key={product.code_color} />;
+		return <Card data={product} key={product.name} />;
 	});
 };
 

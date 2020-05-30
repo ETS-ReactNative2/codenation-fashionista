@@ -29,8 +29,9 @@ const Topbar = ({ qntdSacola }) => (
 );
 
 const mapStateToProps = (state) => {
+	const { myBag } = state.bag;
 	return {
-		qntdSacola: state.bag.myBag.length,
+		qntdSacola: myBag.length ? myBag.reduce((qntd, { amount }) => qntd + amount, 0) : 0,
 	};
 };
 

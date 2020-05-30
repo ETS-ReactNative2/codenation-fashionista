@@ -28,12 +28,6 @@ const createUrlFromName = (name) => {
 	return dashed;
 };
 
-export const parseNameFromUrl = (url) => {
-	const uppercase = url.toUpperCase();
-	const spaced = uppercase.replace(/-/g, " ");
-	return spaced;
-};
-
 const leanProduct = (product) => {
 	return {
 		name: product.name,
@@ -52,6 +46,6 @@ export const catalogFilter = (catalog) => {
 	return catalog.map((product) => leanProduct(product));
 };
 
-export const getProductByName = (catalog, name) => {
-	return catalog.find((product) => name === product.name);
+export const getProductByUrl = (catalog, url) => {
+	return catalog.find((product) => url === product.url);
 };
