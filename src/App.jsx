@@ -6,7 +6,7 @@ import { fetchCatalog } from "./store/actions/apiActions";
 import Topbar from "./components/Topbar/Topbar";
 import Catalogo from "./components/Catalogo/Catalogo.jsx";
 import Produto from "./components/Produto/Produto";
-// import Sidebar from "./components/Sidebar/Sidebar";
+import Sidebar from "./components/Sidebar/Sidebar";
 import Error404 from "./components/Errors/Error404";
 
 class App extends Component {
@@ -15,9 +15,9 @@ class App extends Component {
 	}
 
 	render() {
+		const { showSidebar } = this.props;
 		return (
-			// <div className="App sidebar-is-active">
-			<div className="App">
+			<div className={"App" + (showSidebar ? " sidebar-is-active" : "")}>
 				<Router>
 					<Topbar />
 					<Switch>
@@ -25,12 +25,18 @@ class App extends Component {
 						<Route path="/produto/:name" component={Produto} />
 						<Route path="*" component={Error404} />
 					</Switch>
-					{/* <Sidebar /> */}
+					{showSidebar ? <Sidebar /> : null}
 				</Router>
 			</div>
 		);
 	}
 }
+
+const mapStateToProps = (state) => {
+	return {
+		showSidebar: state.sidebar.active,
+	};
+};
 
 const mapDispatchToProps = (dispatch) => {
 	return {
@@ -38,4 +44,4 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

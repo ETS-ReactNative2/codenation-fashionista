@@ -1,5 +1,5 @@
 import axios from "axios";
-import { catalogFilter } from "../../utils/catalog";
+import { catalogFilter } from "../../utils/catalogFunctions";
 
 export const fetchCatalog = () => {
 	return (dispatch) => {

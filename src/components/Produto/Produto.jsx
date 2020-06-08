@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addToBag } from "../../store/actions/bagActions";
-import { getProductByUrl } from "../../utils/catalog";
+import { getProductByUrl } from "../../utils/productFunctions";
 import Error404 from "../Errors/Error404";
 import "./Produto.scss";
 
@@ -24,7 +24,6 @@ class Produto extends Component {
 
 		if (selectedSize !== null) {
 			product.choosen_size = product.sizes[selectedSize];
-			console.log(product);
 			addProduct(product);
 		} else {
 			this.setState({

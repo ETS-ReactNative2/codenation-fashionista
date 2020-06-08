@@ -1,4 +1,4 @@
-import { parsePriceToFloat } from "../../utils/catalog";
+import { addNewProduct, removeProduct, decrementAmount, incrementAmount } from "../../utils/bagFunctions";
 
 const initState = {
 	myBag: [],
@@ -6,28 +6,19 @@ const initState = {
 };
 
 const bagReducer = (state = initState, action) => {
+	const parameters = [state.myBag, action.product, state.totalPrice];
 	switch (action.type) {
 		case "ADD_PRODUCT":
-			console.log(state);
+			return addNewProduct(...parameters);
 
-			const itemIndex = state.myBag.findIndex((item) => item.product === action.product);
-			const myBag =
-				itemIndex === -1
-					? [
-							...state.myBag,
-							{
-								product: action.product,
-								amount: 1,
-							},
-					  ]
-					: state.myBag.map((item, index) => {
-							if (index === itemIndex) item.amount += 1;
-							return item;
-					  });
-			return {
-				myBag,
-				totalPrice: state.totalPrice + parsePriceToFloat(action.product.actual_price),
-			};
+		case "REMOVE_PRODUCT":
+			return removeProduct(...parameters);
+
+		case "INCREMENT_PRODUCT_AMOUNT":
+			return incrementAmount(...parameters);
+
+		case "DECREMENT_PRODUCT_AMOUNT":
+			return decrementAmount(...parameters);
 
 		default:
 			return state;

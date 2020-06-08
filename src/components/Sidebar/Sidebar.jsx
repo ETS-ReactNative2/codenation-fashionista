@@ -1,32 +1,38 @@
 import React from "react";
 import "./Sidebar.scss";
-// import Item from "./Item/Item";
+import { connect } from "react-redux";
+import { getBagLength } from "../../utils/bagFunctions";
+import { deactivateSidebar } from "../../store/actions/sidebarActions";
 
-const Sidebar = () => {
+import Busca from "./Busca/Busca";
+import Sacola from "./Sacola/Sacola";
+
+const Sidebar = ({ hideSidebar, content, bag }) => {
+	const isBag = content === "myBag";
 	return (
 		<div className="sidebar">
 			<header className="sidebar__header">
-				<button className="sidebar__icon">
+				<button className="sidebar__icon" onClick={hideSidebar}>
 					<i className="material-icons">arrow_back</i>
 				</button>
-				<h4 className="sidebar__title">Buscar Produtos</h4>
+				<h4 className="sidebar__title">{isBag ? `Sacola (${getBagLength(bag.myBag)})` : "Buscar Produtos"}</h4>
 			</header>
-			<div className="sidebar__content">
-				<header className="sidebar__busca">
-					<input type="text" placeholder="Buscar produto ..." />
-				</header>
-				<span className="sidebar__error">Nenhum item encontrado</span>
-				{/* <ul className="sidebar__items">
-					<Item />
-					<Item />
-					<Item />
-					<Item />
-				</ul> */}
-			</div>
-			<footer className="sidebar__footer">
-				<span>Subtotal - R$ 789,50</span>
-			</footer>
+			<div className="sidebar__content">{isBag ? <Sacola bag={bag} /> : <Busca />}</div>
 		</div>
 	);
 };
-export default Sidebar;
+
+const mapStateToProps = (state) => {
+	return {
+		content: state.sidebar.content,
+		bag: state.bag,
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		hideSidebar: () => dispatch(deactivateSidebar()),
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

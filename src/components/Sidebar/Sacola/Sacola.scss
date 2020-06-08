@@ -1,0 +1,17 @@
+@import "../../../assets/styles.scss";
+
+.sacola {
+	height: 100%;
+
+	&__footer {
+		position: fixed;
+		height: 3rem;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		bottom: 0;
+		background-color: $dark-gray;
+		padding: 0 4%;
+		@include my-font(0.9rem, 600, white);
+	}
+}
