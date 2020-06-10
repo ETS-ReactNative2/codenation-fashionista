@@ -1,5 +1,6 @@
 import React from "react";
 import "./Errors.scss";
+import { Link } from "react-router-dom";
 
 const Error404 = () => {
 	return (
@@ -9,7 +10,11 @@ const Error404 = () => {
 			</div>
 			<div className="error__cta">
 				<span>Continue vendo nossos produtos</span>
-				<button>Voltar ao Catálogo</button>
+				<button>
+					<Link to={"/"} replace>
+						Voltar ao Catálogo
+					</Link>
+				</button>
 			</div>
 		</div>
 	);

@@ -18,13 +18,19 @@ class Produto extends Component {
 		});
 	};
 
-	addToBag = (product) => {
+	addToBag = () => {
 		const { selectedSize } = this.state;
+		const choosenSize = this.props.data.sizes[selectedSize];
+		const productId = this.props.data.id;
+		const price = this.props.data.actual_price;
 		const addProduct = this.props.addToBag;
 
 		if (selectedSize !== null) {
-			product.choosen_size = product.sizes[selectedSize];
-			addProduct(product);
+			addProduct({
+				product_id: productId,
+				size: choosenSize,
+				unit_price: price,
+			});
 		} else {
 			this.setState({
 				...this.state,
@@ -74,7 +80,7 @@ class Produto extends Component {
 								<ul className="produto__sizes">{this.renderSizes(data.sizes)}</ul>
 							</div>
 							<div className="produto__cta">
-								<button onClick={() => this.addToBag(data)}>Adicionar à Sacola</button>
+								<button onClick={this.addToBag}>Adicionar à Sacola</button>
 							</div>
 						</div>
 					</div>
@@ -88,8 +94,9 @@ class Produto extends Component {
 
 const mapStateToProps = (state, ownProps) => {
 	const { products, loading } = state.catalog;
+	const { name, color } = ownProps.match.params;
+	const url = name + (color === undefined ? "" : "/" + color);
 
-	const url = ownProps.match.params.name;
 	return {
 		data: getProductByUrl(products, url),
 		loading,
@@ -98,7 +105,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		addToBag: (product) => dispatch(addToBag(product)),
+		addToBag: (item) => dispatch(addToBag(item)),
 	};
 };
 

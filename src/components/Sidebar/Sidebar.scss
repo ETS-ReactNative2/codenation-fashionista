@@ -39,6 +39,8 @@
 
 	&__items {
 		padding: 0 2.5%;
+		height: calc(100% - 3rem);
+		overflow-y: auto;
 	}
 
 	&__error {

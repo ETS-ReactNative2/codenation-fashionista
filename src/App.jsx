@@ -22,7 +22,7 @@ class App extends Component {
 					<Topbar />
 					<Switch>
 						<Route exact path="/" component={Catalogo} />
-						<Route path="/produto/:name" component={Produto} />
+						<Route path="/produto/:name/:color?" component={Produto} />
 						<Route path="*" component={Error404} />
 					</Switch>
 					{showSidebar ? <Sidebar /> : null}

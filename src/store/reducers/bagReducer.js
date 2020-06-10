@@ -1,4 +1,4 @@
-import { addNewProduct, removeProduct, decrementAmount, incrementAmount } from "../../utils/bagFunctions";
+import { addNewItem, removeProduct, decrementAmount, incrementAmount } from "../../utils/bagFunctions";
 
 const initState = {
 	myBag: [],
@@ -6,10 +6,10 @@ const initState = {
 };
 
 const bagReducer = (state = initState, action) => {
-	const parameters = [state.myBag, action.product, state.totalPrice];
+	const parameters = [state.myBag, action.payload, state.totalPrice];
 	switch (action.type) {
 		case "ADD_PRODUCT":
-			return addNewProduct(...parameters);
+			return addNewItem(...parameters);
 
 		case "REMOVE_PRODUCT":
 			return removeProduct(...parameters);

@@ -3,18 +3,21 @@ import "./Item.scss";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { removeFromBag, incrementAmount, decrementAmount } from "../../../store/actions/bagActions";
+import getById from "../../../utils/getById";
 import { deactivateSidebar } from "../../../store/actions/sidebarActions";
 
 const Item = (props) => {
-	const product = props.data;
+	const { isBag, data } = props;
+	const product = isBag ? getById(props.products, data.product_id) : data;
 	const hasPromotion = product.on_sale;
-	const { showBagOptions, removeFromBag, incrementAmount, decrementAmount, deactivateSidebar } = props;
-	const amount = showBagOptions ? props.amount : null;
+	const { removeFromBag, incrementAmount, decrementAmount, deactivateSidebar } = props;
 
 	return (
 		<li className="item">
 			<figure className="item__image">
-				<img src={product.image} alt={"Foto " + product.name.toLowerCase} />
+				<Link to={"/produto/" + product.url} replace onClick={deactivateSidebar}>
+					<img src={product.image} alt={"Foto " + product.name.toLowerCase} />
+				</Link>
 			</figure>
 			<div className="item__infos">
 				<h5 className="item__name">
@@ -23,13 +26,13 @@ const Item = (props) => {
 					</Link>
 				</h5>
 				<span className="item__price item__price--installments">{"em até " + product.installments}</span>
-				{showBagOptions ? (
+				{isBag ? (
 					<div className="item__basket">
-						<span className="item__length">{"Tam.: " + product.choosen_size}</span>
+						<span className="item__length">{"Tam.: " + data.size}</span>
 						<div className="item__amount">
-							<button onClick={() => decrementAmount(product)}>-</button>
-							<span>{amount}</span>
-							<button onClick={() => incrementAmount(product)}>+</button>
+							<button onClick={() => decrementAmount(data.id)}>-</button>
+							<span>{data.amount}</span>
+							<button onClick={() => incrementAmount(data.id)}>+</button>
 						</div>
 					</div>
 				) : null}
@@ -38,8 +41,8 @@ const Item = (props) => {
 				<span className="item__price">{product.actual_price}</span>
 				{hasPromotion ? <span className="item__price item__price--striked">{product.regular_price}</span> : null}
 			</p>
-			{showBagOptions ? (
-				<button className="item__remove" onClick={() => removeFromBag(product)}>
+			{isBag ? (
+				<button className="item__remove" onClick={() => removeFromBag(data.id)}>
 					<span className="material-icons text-alert">delete</span>
 				</button>
 			) : null}
@@ -49,16 +52,18 @@ const Item = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		decrementAmount: (product) => dispatch(decrementAmount(product)),
-		incrementAmount: (product) => dispatch(incrementAmount(product)),
-		removeFromBag: (product) => dispatch(removeFromBag(product)),
+		decrementAmount: (itemId) => dispatch(decrementAmount(itemId)),
+		incrementAmount: (itemId) => dispatch(incrementAmount(itemId)),
+		removeFromBag: (itemId) => dispatch(removeFromBag(itemId)),
 		deactivateSidebar: () => dispatch(deactivateSidebar()),
 	};
 };
 
 const mapStateToProps = (state) => {
 	return {
-		showBagOptions: state.sidebar.content === "myBag",
+		isBag: state.sidebar.content === "myBag",
+		products: state.catalog.products,
+		bag: state.bag.myBag,
 	};
 };
 

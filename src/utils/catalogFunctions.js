@@ -1,3 +1,5 @@
+import generateId from "uniqid";
+
 const filterSizes = (sizes) => {
 	return sizes.filter((size) => size.available).map((size) => size.size);
 };
@@ -24,7 +26,9 @@ export const createUrlFromName = (name) => {
 
 const leanProduct = (product) => {
 	return {
+		id: generateId(),
 		name: product.name,
+		color: product.color_slug,
 		on_sale: product.on_sale,
 		actual_price: product.actual_price,
 		...getPromotionInfo(product),
@@ -35,6 +39,20 @@ const leanProduct = (product) => {
 	};
 };
 
+const removeUrlDuplicatta = (catalog) => {
+	catalog.forEach((product, index) => {
+		const restOfCatalog = catalog.slice(index + 1);
+		const foundIndex = restOfCatalog.findIndex((p) => p.url === product.url);
+		if (foundIndex >= 0) {
+			product.url += "/" + product.color;
+			catalog[index + 1 + foundIndex].url += "/" + catalog[foundIndex].color;
+		}
+		delete product.color;
+	});
+	return catalog;
+};
+
 export const catalogFilter = (catalog) => {
-	return catalog.map((product) => leanProduct(product));
+	const leanCatalog = catalog.map((product) => leanProduct(product));
+	return removeUrlDuplicatta(leanCatalog);
 };

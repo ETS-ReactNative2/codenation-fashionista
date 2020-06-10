@@ -1,34 +1,38 @@
-import { getIndexOfProduct } from "../../utils/bagFunctions";
+import { getIdOfItemInBag } from "../../utils/bagFunctions";
 
-export const addToBag = (product) => {
+export const addToBag = (item) => {
+	const { product_id, size } = item;
 	return (dispatch, getState) => {
 		const { myBag } = getState().bag;
-		const index = getIndexOfProduct(myBag, product);
-		if (index >= 0) {
-			dispatch({ type: "INCREMENT_PRODUCT_AMOUNT", product });
-		} else {
-			dispatch({ type: "ADD_PRODUCT", product });
-		}
+		const id = getIdOfItemInBag(myBag, product_id, size);
+		dispatch(
+			id !== null
+				? incrementAmount(id)
+				: {
+						type: "ADD_PRODUCT",
+						payload: item,
+				  }
+		);
 	};
 };
 
-export const removeFromBag = (product) => {
+export const removeFromBag = (itemId) => {
 	return {
 		type: "REMOVE_PRODUCT",
-		product,
+		payload: itemId,
 	};
 };
 
-export const incrementAmount = (product) => {
+export const incrementAmount = (itemId) => {
 	return {
 		type: "INCREMENT_PRODUCT_AMOUNT",
-		product,
+		payload: itemId,
 	};
 };
 
-export const decrementAmount = (product) => {
+export const decrementAmount = (itemId) => {
 	return {
 		type: "DECREMENT_PRODUCT_AMOUNT",
-		product,
+		payload: itemId,
 	};
 };

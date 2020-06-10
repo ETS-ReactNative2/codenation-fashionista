@@ -6,11 +6,27 @@ import { deactivateSidebar } from "../../store/actions/sidebarActions";
 
 import Busca from "./Busca/Busca";
 import Sacola from "./Sacola/Sacola";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 const Sidebar = ({ hideSidebar, content, bag }) => {
 	const isBag = content === "myBag";
+	const sidebarRef = useRef();
+
+	const handleClick = (e) => {
+		if (sidebarRef.current.contains(e.target)) return;
+		hideSidebar();
+	};
+
+	useEffect(() => {
+		document.addEventListener("click", handleClick);
+		return () => {
+			document.removeEventListener("click", handleClick);
+		};
+	});
+
 	return (
-		<div className="sidebar">
+		<div className="sidebar" ref={sidebarRef}>
 			<header className="sidebar__header">
 				<button className="sidebar__icon" onClick={hideSidebar}>
 					<i className="material-icons">arrow_back</i>

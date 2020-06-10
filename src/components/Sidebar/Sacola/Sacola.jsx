@@ -6,12 +6,13 @@ import { parseFloatToPrice } from "../../../utils/productFunctions";
 
 const Sacola = ({ bag }) => {
 	const { myBag, totalPrice } = bag;
+
 	return (
 		<div className="sacola">
 			{myBag.length ? (
 				<ul className="sidebar__items">
 					{myBag.map((item) => (
-						<Item data={item.product} amount={item.amount} key={item.product.name} />
+						<Item data={item} key={item.id} />
 					))}
 				</ul>
 			) : (
