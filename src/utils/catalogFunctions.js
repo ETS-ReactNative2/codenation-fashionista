@@ -1,5 +1,3 @@
-import generateId from "uniqid";
-
 const filterSizes = (sizes) => {
 	return sizes.filter((size) => size.available).map((size) => size.size);
 };
@@ -26,7 +24,6 @@ export const createUrlFromName = (name) => {
 
 const leanProduct = (product) => {
 	return {
-		id: generateId(),
 		name: product.name,
 		color: product.color_slug,
 		on_sale: product.on_sale,
@@ -53,6 +50,10 @@ const removeUrlDuplicatta = (catalog) => {
 };
 
 export const catalogFilter = (catalog) => {
-	const leanCatalog = catalog.map((product) => leanProduct(product));
+	const leanCatalog = catalog.map((product, index) => {
+		let a = leanProduct(product);
+		a.id = index;
+		return a;
+	});
 	return removeUrlDuplicatta(leanCatalog);
 };
