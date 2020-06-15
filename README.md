@@ -1,68 +1,49 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#Fashionista
+###Um projeto de React estimulado pela [Codenation](https://www.codenation.dev/)
 
-## Available Scripts
+**Link para o site: https://codenation-fashionista.netlify.app/**
 
-In the project directory, you can run:
+---
 
-### `yarn start`
+##Contexto
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+O desenvolvedor front-end é um profissional de tecnologia bastante requerido no mercado digital, sendo responsável pela apresentação do produto (sites, aplicativos mobiles, etc.) para o cliente. Como me interesso por essa área de desenvolvimento, procurei por meios em que poderia me desenvolver e o AceleraDev React da Codenation foi minha primeira oportunidade.
+O programa consistia em 9 módulos com conteúdos e pequenos projetos mais um projeto final. Este repositório contém o projeto final desenvolvido por mim.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- **Sobre o projeto**
 
-### `yarn test`
+	O projeto contemplava a grande maioria dos conteúdos apresentados durante o programa e dava a oportunidade ao participante de trabalhar em um projeto partindo do zero e alcançando resultados avançados. O escopo do projeto é enunciado a seguir:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+	> Como um profissional front-end, você será responsável por desenvolver as principais funcionalidades de um e-commerce de moda feminina, o Fashionista, garantindo a melhor experiência possível para os usuários interagirem com os produtos.
 
-### `yarn build`
+	O projeto deveria seguir algumas regras que direcionavam o desenvolvimento. Dentre elas estão:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+	- Deve ser mobile first
+	- Deve consumir uma API (fornecida)
+	- O estado global da aplicação deverá ser gerenciado com Redux
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+	Outros detalhes do projeto são encontrados na [página de instruções](https://wwww.codenation.dev/private-journey/react-online-1/challenge/ecommerce).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+##Desenvolvimento
 
-### `yarn eject`
+O projeto foi desenvolvido com a ferramenta **[create-react-app](https://github.com/facebook/create-react-app)** para criar uma aplicação front-end com React, o que foi útil para criar uma interface do usuário dinâmica e simples. O React facilitou também a criação de uma **[Single Page Application](https://en.wikipedia.org/wiki/Single-page_application)** , que melhora a experiência do usuário.
+O começo do desenvolvimento foi focado na criação e estilização dos componentes que integrariam a interface do E-Commerce. Para isso, optei por usar arquivos .jsx combinados com estilos CSS escritos em SASS. Além disso, um dos requisitos do projeto era que deveria ser utillizada a **[metodologia BEM CSS](http://getbem.com/introduction/)** para escrever os estilos dos componentes.
+Posteriormente, comecei a integrar os componentes para criar as páginas e a escrever o código que regeria a aplicação. No final desta fase, a aplicação já renderizava todos os produtos que a API fornecia.
+Depois, implementei o **[Redux](https://redux.js.org/)** para gerenciamento dos estados da aplicação e cuidei de linkar as páginas através do **[React Router](https://reacttraining.com/react-router/)**. Com isso, já foi possível finalizar a funcionalidade de busca por produto e a "Sacola" ou "Carrinho de compra" que todo E-Commerce possui por necessidade.
+Finalmente, trabalhei em adquirir e guardar informações no storage local para que a "Sacola" não zerasse caso o site fosse atualizado. Deste modo, a aplicação já estava pronta para deploy.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+##Aprendizados
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Além dos aprendizados práticos de realizar um projeto, adquiri conhecimento em diversos conteúdos, sendo os principais:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Criação de interfaces web com React
+- Gerenciamento de estado com Redux
+- Desenvolvimento de SPA
+- Desenvolvimento de testes com Jest
+- Metodologia BEM CSS e Atomic Design
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+##Próximos passos
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+O que devo fazer agora é aprofundar em conteúdos relacionados e conhecer melhor as boas práticas do desenvolvedor front-end. Um item que ficou notório que preciso melhorar e praticar é desenvolvimento de testes unitários. Além disso, vou estudar mais a respeito de CI/CD, PWA e React Hooks.
+Pretendo voltar neste projeto para implementar animações com o **[Framer Motion](https://www.framer.com/motion/)** para React, pois acredito que faltou este detalhe na UI, e é um conteúdo que gostaria de aprender, visto sua importância no que tange a experiência do usuário.
+Conteúdo novo que estudarei agora é, a princípio, **[React Native](https://reactnative.dev/)**, para desenvolvimento front-end em dispositivos Mobile.
